@@ -1,3 +1,5 @@
+const express = require('express')
+const PORTA = 8000
 const fs = require('fs')
 
 function adicionarMensagem (nome_aluno) {
@@ -13,3 +15,9 @@ function adicionarMensagem (nome_aluno) {
         }
     })
 }
+
+const server = express()
+server.use(express.json())
+
+
+server.listen(PORTA, ()=> {console.log("Servidor rodando na porta 8000.")})
