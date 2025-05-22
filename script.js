@@ -24,8 +24,8 @@ server.post('/logs', (req, res) => {
         if(nome_aluno){
             return res.status(400).json({erro: 'Você não colocou um nome!'})
         }
-        adicionarMensagem(nome_aluno)
-            res.status(200).json({mensagem: 'Log salvo'})
+        const idGerado = adicionarMensagem(nome_aluno)
+            res.status(200).json({mensagem: 'Log salvo', id: idGerado})
     
 })
 
