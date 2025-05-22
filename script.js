@@ -21,9 +21,9 @@ function buscarMensagemId (id) {
         const dados = fs.readFileSync('logs.txt', 'utf-8')
         const linhas = dados.split('\n')
 
-        for (const linhas of linhas){
-            if (linhas.starsWith(id)){
-                return linhas
+        for (const linha of linhas){
+            if (linhas.startsWith(id)){
+                return linha
             }
         }
         return null
@@ -34,7 +34,7 @@ function buscarMensagemId (id) {
 }
 server.post('/logs', (req, res) => {
     const {nome_aluno} = req.body
-        if(nome_aluno){
+        if(!nome_aluno){
             return res.status(400).json({erro: 'Você não colocou um nome!'})
         }
         const idGerado = adicionarMensagem(nome_aluno)
